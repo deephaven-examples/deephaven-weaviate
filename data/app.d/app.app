@@ -1,0 +1,10 @@
+type=script
+scriptType=python
+enabled=true
+id=weaviate-prereqs
+name=Weaviate Prerequisites
+file_0=./Connect_to_Weaviate.py
+file_1=./Create_Class.py
+file_2=./Load_Data.py
+file_3=./Add_Data_to_Class.py
+file_4=./Create_Input_Table.py
