@@ -1,6 +1,6 @@
 # Deephaven + Weaviate for real-time semantic search
 
-This repository combines Deephaven with Weaviate to show a simple example of a combination that could be used to power a real-time semantic search engine. It uploads 80 books with descriptions and language from the [Skelebor/book_titles_and_descriptions](https://huggingface.co/datasets/Skelebor/book_titles_and_descriptions) dataset. The dataset itself contains nearly 2 million books. However, this tool uses Weaviate's free tier, which is rate-limited at 100 items/hour. Thus, 80 is chosen to allow some room to perform searches on the data. The books are added to a `Book` class (which is created if it doesn't exist). From there, the Deephaven instance creates an input table called `book_genres`. Add data to this table by double clicking on cells and typing search terms. Click commit to automatically trigger the `book_recommandations` table to update with the top result (both book title and description) returned from Weaviate's vector search engine.
+This repository combines Deephaven with Weaviate to show a simple example of a combination that could be used to power a real-time semantic search engine. It uploads 80 books with descriptions and language from the [Skelebor/book_titles_and_descriptions](https://huggingface.co/datasets/Skelebor/book_titles_and_descriptions) dataset. The dataset itself contains nearly 2 million books. However, this tool uses Weaviate's free tier, which is rate-limited at 100 items/hour. Thus, 80 is chosen to allow some room to perform searches on the data. The books are added to a `Book` class (which is created if it doesn't exist). From there, the Deephaven instance creates an input table called `book_search`. Add data to this table by double clicking on cells and typing search terms. Click commit to automatically trigger the `book_recommandations` table to update with the top result (both book title and description) returned from Weaviate's vector search engine.
 
 ## About this project 
 
@@ -32,7 +32,7 @@ To start the application, perform:
 docker compose up --build
 ```
 
-The first time you start the application, it can take a few minutes, since it has to download the entire dataset. Wait for the Docker logs to display `Server started on port 10000`, then connect to `http://localhost:10000/ide` in your preferred web browser. The Deephaven IDE should appear with a default layout showing the tables `book_genres` and `book_recommendations` on the bottom half. If it doesn't, you can bring them up via the `Panels` dropdown menu at the top right of the screen, or by importing the layout file found in `data/storage/layouts` via the same dropdown.
+The first time you start the application, it can take a few minutes, since it has to download the entire dataset. Wait for the Docker logs to display `Server started on port 10000`, then connect to `http://localhost:10000/ide` in your preferred web browser. The Deephaven IDE should appear with a default layout showing the tables `book_search` and `book_recommendations` on the bottom half. If it doesn't, you can bring them up via the `Panels` dropdown menu at the top right of the screen, or by importing the layout file found in `data/storage/layouts` via the same dropdown.
 
 If you start this application more than once per hour, you will likely notice the following message appear numerous times on subsequent launches:
 
@@ -40,7 +40,7 @@ If you start this application more than once per hour, you will likely notice th
 {'error': [{'message': 'update vector: failed with status: 429 error: Rate limit reached. You reached free usage limit (reset hourly). Please subscribe to a plan at https://huggingface.co/pricing to use the API at this rate'}]}
 ```
 
-This, by itself, is fine, but subsequent entries to the `book_genres` table will cause the application to crash. Exceeding the rate limit by attempting to perform a search causes an error, which ends the Python process, and subsequently the JVM, and Deephaven.
+This, by itself, is fine, but subsequent entries to the `book_search` table will cause the application to crash. Exceeding the rate limit by attempting to perform a search causes an error, which ends the Python process, and subsequently the JVM, and Deephaven.
 
 ## Terms of use
 
