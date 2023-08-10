@@ -1,6 +1,6 @@
 # Deephaven + Weaviate for real-time semantic search
 
-This repository combines Deephaven with Weaviate to show a simple example of a combination that could be used to power a real-time semantic search engine. It uploads 80 books with descriptions and language from the [Skelebor/book_titles_and_descriptions](https://huggingface.co/datasets/Skelebor/book_titles_and_descriptions) dataset. The dataset itself contains nearly 2 million books. However, this tool uses Weaviate's free tier, which is rate-limited at 100 items/hour. Thus, 80 is chosen to allow some room to perform searches on the data. The books are added to a `Book` class (which is created if it doesn't exist). From there, the Deephaven instance creates an input table called `book_search`. Add data to this table by double clicking on cells and typing search terms. Click commit to automatically trigger the `book_recommandations` table to update with the top result (both book title and description) returned from Weaviate's vector search engine.
+This repository combines Deephaven with Weaviate to show a simple example of a combination that could be used to power a real-time semantic search engine. It uploads 80 books with descriptions and language from the [Skelebor/book_titles_and_descriptions](https://huggingface.co/datasets/Skelebor/book_titles_and_descriptions) dataset. The dataset itself contains nearly 2 million books. However, this tool uses Weaviate's free tier, which is rate-limited at 100 items/hour. Thus, 80 is chosen to allow some room to perform searches on the data. The books are added to a `Book` class (which is created if it doesn't exist). From there, the Deephaven instance creates an input table called `book_search`. Add data to this table by double-clicking on cells and typing search terms. Click commit to automatically trigger the `book_recommendations` table to update with the top result (both book title and description) returned from Weaviate's vector search engine.
 
 ## About this project 
 
@@ -21,7 +21,7 @@ This application uses Deephaven's [application mode](https://deephaven.io/core/d
 
 - `DH_PSK`: The Deephaven pre-shared key. If this isn't set, the pre-shared key will either be an empty string, or a randomly generated sequence of characters. If the latter, see [How to configure and use pre-shared key authentication](https://deephaven.io/core/docs/how-to-guides/authentication/auth-psk/).
 - `WEAVIATE_ENDPOINT`: Your Weaviate cluster endpoint. If this isn't set properly, you will not be able to upload data to Weaviate, or perform semantic search.
-- `WEAVIATE_TOKEN`: Your Weaviate authentication token. If this isn't set properly, you will not be able to connect to your Weaviate cluster.
+- `WEAVIATE_TOKEN`: Your Weaviate authentication token. If this isn't set properly, you cannot connect to your Weaviate cluster.
 - `HUGGINGFACE_TOKEN`: Your Hugging Face token. If this isn't set properly, you will not be able to use its vectorization engines to vectorize text data, resulting the inability to perform semantic search.
 
 To see the scripts that run upon startup, see [here](./data/app.d/app.app).
