@@ -45,3 +45,7 @@ This, by itself, is fine, but subsequent entries to the `book_search` table will
 ## Terms of use
 
 See the [license](./LICENSE.md), Deephaven's [code of conduct](https://github.com/deephaven/deephaven-core/blob/main/CODE_OF_CONDUCT.md), and Weaviate's [code of conduct](https://github.com/weaviate/weaviate/blob/master/CODE_OF_CONDUCT.md) for usage guidelines.
+
+## Note
+
+This application was last updated in August of 2023, when Deephaven Community Core version 0.27.0 was latest. It is only guaranteed to work on Deephaven versions 0.27.0 and 0.27.1.
